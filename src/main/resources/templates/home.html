@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Bike race results</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Race results</h1>
+    <h1>Race results</h1>
+    <ul>
+        <li th:each="race : ${races}" th:text="${race.name}" />
+    </ul>
 </body>
 </html>

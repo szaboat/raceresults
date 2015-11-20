@@ -26,6 +26,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
     compile "com.heroku.sdk:heroku-jdbc:0.1.1"
     compile "org.postgresql:postgresql:9.4-1201-jdbc4"
     compile "org.springframework:spring-test:4.2.3.RELEASE"

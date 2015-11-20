@@ -8,7 +8,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
@@ -19,27 +18,26 @@ jar {
 
 repositories {
     mavenCentral()
+    maven { url "http://repo.spring.io/release" }
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    testCompile("junit:junit")
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "com.heroku.sdk:heroku-jdbc:0.1.1"
+    compile "org.postgresql:postgresql:9.4-1201-jdbc4"
+    compile "org.springframework:spring-test:4.2.3.RELEASE"
+    testCompile "junit:junit"
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
 task getHomeDir << {
     println gradle.gradleHomeDir
-}
-
-dependencies {
-  runtime "org.slf4j:slf4j-simple:1.7.12"
-  compile "com.heroku.sdk:heroku-jdbc:0.1.1"
-  compile "org.postgresql:postgresql:9.4-1201-jdbc4"
 }
 
 task stage {

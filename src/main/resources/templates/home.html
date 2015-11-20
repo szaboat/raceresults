@@ -3,11 +3,21 @@
 <head>
     <title>Bike race results</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Race results</h1>
-    <ul>
-        <li th:each="race : ${races}" th:text="${race.name}" />
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Race results</h1>
+    </div>
+</div>
+
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item" th:each="race : ${races}" th:text="${race.name}"/>
     </ul>
+</div>
+
 </body>
 </html>

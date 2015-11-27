@@ -14,10 +14,11 @@ public class Race {
     private long id;
 
     private String name;
-    private String description;
+    private String shortName;
     private String url;
-
     private Date date;
+    private String type;
+    private String location;
 
     public String getName() {
         return name;

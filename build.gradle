@@ -4,6 +4,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.0.RELEASE")
+        classpath("com.jolbox:bonecp-spring:0.8.0.RELEASE")
     }
 }
 
@@ -29,7 +30,11 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
     compile "com.heroku.sdk:heroku-jdbc:0.1.1"
     compile "org.postgresql:postgresql:9.4-1201-jdbc4"
-    compile "org.springframework:spring-test:4.2.3.RELEASE"
+    compile "com.jolbox:bonecp-spring:0.8.0.RELEASE"
+    compile "com.h2database:h2:1.4.190"
+    testCompile "org.springframework:spring-test:4.2.3.RELEASE"
+    testCompile "com.github.springtestdbunit:spring-test-dbunit:1.2.1"
+    testCompile "org.dbunit:dbunit:2.5.1"
     testCompile "junit:junit"
 }
 

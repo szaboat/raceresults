@@ -29,6 +29,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
     compile "com.heroku.sdk:heroku-jdbc:0.1.1"
     compile "org.postgresql:postgresql:9.4-1201-jdbc4"
+    compile "com.h2database:h2:1.4.190"
     compile "org.springframework:spring-test:4.2.3.RELEASE"
     testCompile "junit:junit"
 }

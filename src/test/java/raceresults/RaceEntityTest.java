@@ -1,5 +1,7 @@
 package raceresults;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
@@ -29,5 +31,21 @@ public class RaceEntityTest {
 
         List<Race> races = raceRepository.findAll();
         Assert.assertEquals(0, races.size());
+    }
+
+    @Test
+    public void createRead() throws Exception {
+        Date today = new Date();
+        raceRepository.save(new Race("I. Crossliget", "Crossliget", "http://crossliget.hu", today, "CX", "Budapest"));
+
+        List<Race> races = raceRepository.findAll();
+        Assert.assertEquals(1, races.size());
+
+        Race testRace = races.get(0);
+        Assert.assertEquals(testRace.getName(), "I. Crossliget");
+        Assert.assertEquals(testRace.getUrl(), "http://crossliget.hu");
+        Assert.assertEquals(testRace.getShortName(), "Crossliget");
+        Assert.assertEquals(testRace.getLocation(), "Budapest");
+        Assert.assertEquals(testRace.getType(), "CX");
     }
 }

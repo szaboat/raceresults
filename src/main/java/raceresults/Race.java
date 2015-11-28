@@ -20,7 +20,38 @@ public class Race {
     private String type;
     private String location;
 
+    protected Race() { }
+
+    public Race(String name, String shortName, String url, Date date, String type, String location) {
+        this.name = name;
+        this.shortName = shortName;
+        this.url = url;
+        this.date = date;
+        this.type = type;
+        this.location = location;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

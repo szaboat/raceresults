@@ -15,6 +15,8 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import raceresults.entity.Club;
 import raceresults.repository.ClubRepository;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestPersistenceContext.class })
 @TestExecutionListeners({
@@ -30,7 +32,7 @@ public class ClubEntityTest {
     public void searchNoRacesShouldResultEmptyList() throws Exception {
 
         List<Club> clubs = clubRepository.findAll();
-        Assert.assertEquals(0, clubs.size());
+        assertEquals(0, clubs.size());
     }
 
     @Test
@@ -38,9 +40,9 @@ public class ClubEntityTest {
         clubRepository.save(new Club("Vegan energy food team"));
 
         List<Club> clubs = clubRepository.findAll();
-        Assert.assertEquals(1, clubs.size());
+        assertEquals(1, clubs.size());
 
         Club testClub = clubs.get(0);
-        Assert.assertEquals("Vegan energy food team", testClub.getName());
+        assertEquals("Vegan energy food team", testClub.getName());
     }
 }

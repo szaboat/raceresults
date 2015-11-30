@@ -15,6 +15,8 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import raceresults.entity.Racer;
 import raceresults.repository.RacerRepository;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestPersistenceContext.class })
 @TestExecutionListeners({
@@ -30,7 +32,7 @@ public class RacerEntityTest {
     public void searchNoRacesShouldResultEmptyList() throws Exception {
 
         List<Racer> races = racerRepository.findAll();
-        Assert.assertEquals(0, races.size());
+        assertEquals(0, races.size());
     }
 
     @Test
@@ -38,10 +40,10 @@ public class RacerEntityTest {
         racerRepository.save(new Racer("Arvay Denes", 1981));
 
         List<Racer> racers = racerRepository.findAll();
-        Assert.assertEquals(1, racers.size());
+        assertEquals(1, racers.size());
 
         Racer denes = racers.get(0);
-        Assert.assertEquals("Arvay Denes", denes.getName());
-        Assert.assertEquals(1981, denes.getYearOfBirth());
+        assertEquals("Arvay Denes", denes.getName());
+        assertEquals(1981, denes.getYearOfBirth());
     }
 }

@@ -18,6 +18,8 @@ import raceresults.entity.Race;
 import raceresults.entity.Race.Type;
 import raceresults.repository.RaceRepository;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestPersistenceContext.class })
 @TestExecutionListeners({
@@ -33,7 +35,7 @@ public class RaceEntityTest {
     public void searchNoRacesShouldResultEmptyList() throws Exception {
 
         List<Race> races = raceRepository.findAll();
-        Assert.assertEquals(0, races.size());
+        assertEquals(0, races.size());
     }
 
     @Test
@@ -43,13 +45,13 @@ public class RaceEntityTest {
         raceRepository.save(new Race("I. Crossliget", "Crossliget", "http://crossliget.hu", today, Type.CX, "Budapest"));
 
         List<Race> races = raceRepository.findAll();
-        Assert.assertEquals(1, races.size());
+        assertEquals(1, races.size());
 
         Race testRace = races.get(0);
-        Assert.assertEquals(testRace.getName(), "I. Crossliget");
-        Assert.assertEquals(testRace.getUrl(), "http://crossliget.hu");
-        Assert.assertEquals(testRace.getShortName(), "Crossliget");
-        Assert.assertEquals(testRace.getLocation(), "Budapest");
-        Assert.assertEquals(testRace.getType(), Type.CX);
+        assertEquals(testRace.getName(), "I. Crossliget");
+        assertEquals(testRace.getUrl(), "http://crossliget.hu");
+        assertEquals(testRace.getShortName(), "Crossliget");
+        assertEquals(testRace.getLocation(), "Budapest");
+        assertEquals(testRace.getType(), Type.CX);
     }
 }

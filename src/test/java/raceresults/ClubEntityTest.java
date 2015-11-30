@@ -1,7 +1,5 @@
 package raceresults;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
@@ -14,9 +12,8 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import raceresults.entity.Race;
-import raceresults.entity.Race.Type;
-import raceresults.repository.RaceRepository;
+import raceresults.entity.Club;
+import raceresults.repository.ClubRepository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,32 +23,26 @@ import static org.junit.Assert.assertEquals;
         DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionDbUnitTestExecutionListener.class })
-public class RaceEntityTest {
+public class ClubEntityTest {
 
     @Autowired
-    private RaceRepository raceRepository;
+    private ClubRepository clubRepository;
 
     @Test
     public void searchNoRacesShouldResultEmptyList() throws Exception {
 
-        List<Race> races = raceRepository.findAll();
-        assertEquals(0, races.size());
+        List<Club> clubs = clubRepository.findAll();
+        assertEquals(0, clubs.size());
     }
 
     @Test
     public void createReadTest() throws Exception {
-        Date today = new Date();
+        clubRepository.save(new Club("Vegan energy food team"));
 
-        raceRepository.save(new Race("I. Crossliget", "Crossliget", "http://crossliget.hu", today, Type.CX, "Budapest"));
+        List<Club> clubs = clubRepository.findAll();
+        assertEquals(1, clubs.size());
 
-        List<Race> races = raceRepository.findAll();
-        assertEquals(1, races.size());
-
-        Race testRace = races.get(0);
-        assertEquals(testRace.getName(), "I. Crossliget");
-        assertEquals(testRace.getUrl(), "http://crossliget.hu");
-        assertEquals(testRace.getShortName(), "Crossliget");
-        assertEquals(testRace.getLocation(), "Budapest");
-        assertEquals(testRace.getType(), Type.CX);
+        Club testClub = clubs.get(0);
+        assertEquals("Vegan energy food team", testClub.getName());
     }
 }

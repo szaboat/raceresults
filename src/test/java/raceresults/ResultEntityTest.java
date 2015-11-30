@@ -20,6 +20,8 @@ import raceresults.repository.ResultRepository;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestPersistenceContext.class)
 @TestExecutionListeners({
@@ -34,7 +36,7 @@ public class ResultEntityTest {
 	@Test
 	public void searchNoResultsShouldResultEmptyList() {
 		List<Result> results = resultRepository.findAll();
-		Assert.assertEquals(0, results.size());
+		assertEquals(0, results.size());
 	}
 
 	@Test
@@ -44,15 +46,15 @@ public class ResultEntityTest {
 		resultRepository.save(r);
 
 		List<Result> results = resultRepository.findAll();
-		Assert.assertEquals(1, results.size());
+		assertEquals(1, results.size());
 
 		Result testResult = results.get(0);
-		Assert.assertEquals(1, testResult.getRacerId());
-		Assert.assertEquals(2, testResult.getRaceId());
-		Assert.assertEquals(3, testResult.getTotalTime());
-		Assert.assertEquals(4, testResult.getPosition());
-		Assert.assertEquals("H12", testResult.getRaceNumber());
-		Assert.assertEquals(Status.FINISHED, testResult.getStatus());
-		Assert.assertEquals(today, testResult.getImportedAt());
+		assertEquals(1, testResult.getRacerId());
+		assertEquals(2, testResult.getRaceId());
+		assertEquals(3, testResult.getTotalTime());
+		assertEquals(4, testResult.getPosition());
+		assertEquals("H12", testResult.getRaceNumber());
+		assertEquals(Status.FINISHED, testResult.getStatus());
+		assertEquals(today, testResult.getImportedAt());
 	}
 }

@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Result {
 
 	public enum Status {
-		OK, DNF, DSQ, DNS
+		FINISHED, DNF, DSQ, DNS
 	}
 
 	@Embeddable

@@ -14,12 +14,44 @@ public class Race {
     private long id;
 
     private String name;
-    private String description;
+    private String shortName;
     private String url;
-
     private Date date;
+    private String type;
+    private String location;
+
+    protected Race() { }
+
+    public Race(String name, String shortName, String url, Date date, String type, String location) {
+        this.name = name;
+        this.shortName = shortName;
+        this.url = url;
+        this.date = date;
+        this.type = type;
+        this.location = location;
+    }
 
     public String getName() {
         return name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

@@ -54,4 +54,10 @@ public class RaceEntityTest {
         assertEquals(testRace.getLocation(), "Budapest");
         assertEquals(testRace.getType(), Type.CX);
     }
+
+    @Test
+    public void testCreateRaceWithResults() throws Exception {
+
+    }
+
 }

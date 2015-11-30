@@ -15,15 +15,17 @@ public class Result {
 	@Embeddable
 	public static class Key implements Serializable {
 
-		private long racerId;
-		private long raceId;
+		@ManyToOne
+		private Racer racer;
+		@ManyToOne
+		private Race race;
 
 		protected Key() {
 		}
 
-		public Key(long racerId, long raceId) {
-			this.racerId = racerId;
-			this.raceId = raceId;
+		public Key(Racer racer, Race race) {
+			this.racer = racer;
+			this.race = race;
 		}
 
 		@Override
@@ -31,13 +33,13 @@ public class Result {
 			if (this == o) return true;
 			if (o == null || getClass() != o.getClass()) return false;
 			Key key = (Key) o;
-			return racerId == key.racerId &&
-					raceId == key.raceId;
+			return Objects.equals(racer, key.racer) &&
+					Objects.equals(race, key.race);
 		}
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(racerId, raceId);
+			return Objects.hash(racer, race);
 		}
 	}
 
@@ -57,24 +59,21 @@ public class Result {
 	protected Result() {
 	}
 
-	public Result(long racerId, long raceId, int totalTime, int position, String raceNumber, Status status, Date importedAt) {
-		this.key = new Key(racerId, raceId);
+	public Result(Racer racer, Race race, int totalTime, int position, String raceNumber, Status status, Date importedAt) {
+		this.key = new Key(racer, race);
 		this.totalTime = totalTime;
 		this.position = position;
 		this.raceNumber = raceNumber;
+		this.status = status;
 		this.importedAt = importedAt;
 	}
 
-	public long getRacerId() {
-		return key.racerId;
+	public Race getRace() {
+		return key.race;
 	}
 
-	public long getRaceId() {
-		return key.raceId;
-	}
-
-	public Key getKey() {
-		return key;
+	public Racer getRacer() {
+		return key.racer;
 	}
 
 	public int getTotalTime() {
@@ -95,5 +94,18 @@ public class Result {
 
 	public Date getImportedAt() {
 		return importedAt;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Result result = (Result) o;
+		return Objects.equals(key, result.key);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(key);
 	}
 }

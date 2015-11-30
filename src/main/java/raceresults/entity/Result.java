@@ -48,13 +48,16 @@ public class Result {
 	private int position;
 	private String raceNumber;
 
+	@Enumerated(EnumType.STRING)
+	private Status status;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date importedAt;
 
 	protected Result() {
 	}
 
-	public Result(long racerId, long raceId, int totalTime, int position, String raceNumber, Date importedAt) {
+	public Result(long racerId, long raceId, int totalTime, int position, String raceNumber, Status status, Date importedAt) {
 		this.key = new Key(racerId, raceId);
 		this.totalTime = totalTime;
 		this.position = position;
@@ -84,6 +87,10 @@ public class Result {
 
 	public String getRaceNumber() {
 		return raceNumber;
+	}
+
+	public Status getStatus() {
+		return status;
 	}
 
 	public Date getImportedAt() {

@@ -13,6 +13,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import raceresults.entity.Race;
 import raceresults.entity.Race.Type;
 import raceresults.entity.Result;
+import raceresults.entity.Result.Status;
 import raceresults.repository.RaceRepository;
 import raceresults.repository.ResultRepository;
 
@@ -39,7 +40,7 @@ public class ResultEntityTest {
 	@Test
 	public void createRead() throws Exception {
 		Date today = new Date();
-		Result r = new Result(1, 2, 3, 4, "H12", today);
+		Result r = new Result(1, 2, 3, 4, "H12", Status.FINISHED, today);
 		resultRepository.save(r);
 
 		List<Result> results = resultRepository.findAll();
@@ -51,6 +52,7 @@ public class ResultEntityTest {
 		Assert.assertEquals(3, testResult.getTotalTime());
 		Assert.assertEquals(4, testResult.getPosition());
 		Assert.assertEquals("H12", testResult.getRaceNumber());
+		Assert.assertEquals(Status.FINISHED, testResult.getStatus());
 		Assert.assertEquals(today, testResult.getImportedAt());
 	}
 }

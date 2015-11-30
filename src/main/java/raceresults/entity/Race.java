@@ -13,8 +13,7 @@ public class Race {
        XCO, CX, XCM, ROAD, XCU
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;

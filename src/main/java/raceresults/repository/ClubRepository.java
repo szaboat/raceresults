@@ -1,11 +1,12 @@
 package raceresults.repository;
 
-import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import raceresults.entity.Race;
+import raceresults.entity.Club;
+
+import java.util.List;
 
 @Repository
-public interface RaceRepository extends CrudRepository<Race, Long> {
-    List<Race> findAll();
+public interface ClubRepository extends CrudRepository<Club, Long>{
+    List<Club> findAll();
 }

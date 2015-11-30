@@ -14,6 +14,9 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import raceresults.entity.Race;
+import raceresults.entity.Race.Type;
+import raceresults.repository.RaceRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestPersistenceContext.class })
@@ -36,7 +39,8 @@ public class RaceEntityTest {
     @Test
     public void createRead() throws Exception {
         Date today = new Date();
-        raceRepository.save(new Race("I. Crossliget", "Crossliget", "http://crossliget.hu", today, "CX", "Budapest"));
+
+        raceRepository.save(new Race("I. Crossliget", "Crossliget", "http://crossliget.hu", today, Type.CX, "Budapest"));
 
         List<Race> races = raceRepository.findAll();
         Assert.assertEquals(1, races.size());
@@ -46,6 +50,6 @@ public class RaceEntityTest {
         Assert.assertEquals(testRace.getUrl(), "http://crossliget.hu");
         Assert.assertEquals(testRace.getShortName(), "Crossliget");
         Assert.assertEquals(testRace.getLocation(), "Budapest");
-        Assert.assertEquals(testRace.getType(), "CX");
+        Assert.assertEquals(testRace.getType(), Type.CX);
     }
 }

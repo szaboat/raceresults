@@ -1,4 +1,4 @@
-package raceresults;
+package raceresults.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +9,10 @@ import java.util.Date;
 @Entity
 public class Race {
 
+    public enum Type {
+       XCO, CX, XCM, ROAD, XCU
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -17,12 +21,12 @@ public class Race {
     private String shortName;
     private String url;
     private Date date;
-    private String type;
+    private Type type;
     private String location;
 
     protected Race() { }
 
-    public Race(String name, String shortName, String url, Date date, String type, String location) {
+    public Race(String name, String shortName, String url, Date date, Type type, String location) {
         this.name = name;
         this.shortName = shortName;
         this.url = url;
@@ -47,7 +51,7 @@ public class Race {
         return date;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 

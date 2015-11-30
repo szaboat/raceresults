@@ -1,7 +1,6 @@
 package raceresults;
 
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +9,13 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import raceresults.entity.Athlete;
 import raceresults.entity.Race;
 import raceresults.entity.Race.Type;
-import raceresults.entity.Racer;
 import raceresults.entity.Result;
 import raceresults.entity.Result.Status;
 import raceresults.repository.RaceRepository;
-import raceresults.repository.RacerRepository;
+import raceresults.repository.AthleteRepository;
 import raceresults.repository.ResultRepository;
 
 import java.util.Date;
@@ -39,7 +38,7 @@ public class ResultEntityTest {
 	private RaceRepository raceRepository;
 
 	@Autowired
-	private RacerRepository racerRepository;
+	private AthleteRepository athleteRepository;
 
 	@Test
 	public void searchNoResultsShouldResultEmptyList() {
@@ -51,20 +50,20 @@ public class ResultEntityTest {
 	public void createRead() throws Exception {
 		Date date = new Date();
 
-		Racer racer = new Racer("Attila", 1981);
-		racerRepository.save(racer);
+		Athlete athlete = new Athlete("Attila", 1981);
+		athleteRepository.save(athlete);
 
 		Race race = new Race("24 oras verseny 2016. julius", "24h 2016", "http://sportaktiv.hu", date, Type.XCU, "Zanka");
 		raceRepository.save(race);
 
-		Result result = new Result(racer, race, 24*60*60, 1, "H12", Status.FINISHED, date);
+		Result result = new Result(athlete, race, 24*60*60, 1, "H12", Status.FINISHED, date);
 		resultRepository.save(result);
 
 		List<Result> results = resultRepository.findAll();
 		assertEquals(1, results.size());
 
 		Result testResult = results.get(0);
-		assertEquals(racer, result.getRacer());
+		assertEquals(athlete, result.getRacer());
 		assertEquals(race, result.getRace());
 		assertEquals(24*60*60, testResult.getTotalTime());
 		assertEquals(1, testResult.getPosition());

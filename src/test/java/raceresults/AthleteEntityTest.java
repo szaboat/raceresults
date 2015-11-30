@@ -3,7 +3,6 @@ package raceresults;
 import java.util.List;
 
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,8 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import raceresults.entity.Racer;
-import raceresults.repository.RacerRepository;
+import raceresults.entity.Athlete;
+import raceresults.repository.AthleteRepository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,26 +22,26 @@ import static org.junit.Assert.assertEquals;
         DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionDbUnitTestExecutionListener.class })
-public class RacerEntityTest {
+public class AthleteEntityTest {
 
     @Autowired
-    private RacerRepository racerRepository;
+    private AthleteRepository athleteRepository;
 
     @Test
     public void searchNoRacesShouldResultEmptyList() throws Exception {
 
-        List<Racer> races = racerRepository.findAll();
+        List<Athlete> races = athleteRepository.findAll();
         assertEquals(0, races.size());
     }
 
     @Test
     public void createReadTest() throws Exception {
-        racerRepository.save(new Racer("Arvay Denes", 1981));
+        athleteRepository.save(new Athlete("Arvay Denes", 1981));
 
-        List<Racer> racers = racerRepository.findAll();
-        assertEquals(1, racers.size());
+        List<Athlete> athletes = athleteRepository.findAll();
+        assertEquals(1, athletes.size());
 
-        Racer denes = racers.get(0);
+        Athlete denes = athletes.get(0);
         assertEquals("Arvay Denes", denes.getName());
         assertEquals(1981, denes.getYearOfBirth());
     }

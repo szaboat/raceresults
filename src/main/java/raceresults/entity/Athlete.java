@@ -5,10 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-public class Racer {
+public class Athlete {
 
     private String name;
     private int yearOfBirth;
@@ -16,9 +15,9 @@ public class Racer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    protected Racer() {}
+    protected Athlete() {}
 
-    public Racer(String name, int yearOfBirth) {
+    public Athlete(String name, int yearOfBirth) {
         this.name = name;
         this.yearOfBirth = yearOfBirth;
     }
@@ -35,8 +34,8 @@ public class Racer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Racer racer = (Racer) o;
-        return id == racer.id;
+        Athlete athlete = (Athlete) o;
+        return id == athlete.id;
     }
 
     @Override

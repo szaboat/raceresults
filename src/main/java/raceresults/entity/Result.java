@@ -16,15 +16,15 @@ public class Result {
 	public static class Key implements Serializable {
 
 		@ManyToOne
-		private Racer racer;
+		private Athlete athlete;
 		@ManyToOne
 		private Race race;
 
 		protected Key() {
 		}
 
-		public Key(Racer racer, Race race) {
-			this.racer = racer;
+		public Key(Athlete athlete, Race race) {
+			this.athlete = athlete;
 			this.race = race;
 		}
 
@@ -33,13 +33,13 @@ public class Result {
 			if (this == o) return true;
 			if (o == null || getClass() != o.getClass()) return false;
 			Key key = (Key) o;
-			return Objects.equals(racer, key.racer) &&
+			return Objects.equals(athlete, key.athlete) &&
 					Objects.equals(race, key.race);
 		}
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(racer, race);
+			return Objects.hash(athlete, race);
 		}
 	}
 
@@ -59,8 +59,8 @@ public class Result {
 	protected Result() {
 	}
 
-	public Result(Racer racer, Race race, int totalTime, int position, String raceNumber, Status status, Date importedAt) {
-		this.key = new Key(racer, race);
+	public Result(Athlete athlete, Race race, int totalTime, int position, String raceNumber, Status status, Date importedAt) {
+		this.key = new Key(athlete, race);
 		this.totalTime = totalTime;
 		this.position = position;
 		this.raceNumber = raceNumber;
@@ -72,8 +72,8 @@ public class Result {
 		return key.race;
 	}
 
-	public Racer getRacer() {
-		return key.racer;
+	public Athlete getRacer() {
+		return key.athlete;
 	}
 
 	public int getTotalTime() {

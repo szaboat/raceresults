@@ -22,3 +22,14 @@ create table result (
   raceNumber VARCHAR(10) not null,
   importedAt TIMESTAMP
 );
+
+create table club (
+  id serial not null,
+  name varchar(255) not null
+)
+
+create table racer (
+  id serial not null,
+  name varchar(255) not null,
+  yearOfBirth int not null
+)

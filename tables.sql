@@ -10,3 +10,15 @@ create TABLE race (
   location varchar(255),
   short_name varchar(255)
 );
+
+create type result_status as enum ('OK', 'DNF', 'DSQ', 'DNS');
+
+create table result (
+  racerId int not null,
+  raceId int not null,
+  status result_status not null,
+  totalTime int not null,
+  position int not null,
+  raceNumber VARCHAR(10) not null,
+  importedAt TIMESTAMP
+);

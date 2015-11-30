@@ -11,7 +11,7 @@ create TABLE race (
   short_name varchar(255)
 );
 
-create type result_status as enum ('OK', 'DNF', 'DSQ', 'DNS');
+create type result_status as enum ('FINISHED', 'DNF', 'DSQ', 'DNS');
 
 create table result (
   racerId int not null,

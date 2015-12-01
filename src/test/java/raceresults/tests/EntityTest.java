@@ -2,12 +2,12 @@ package raceresults.tests;
 
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import org.junit.runner.RunWith;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import raceresults.Application;
 import raceresults.TestApplication;
 import raceresults.TestPersistenceContext;
 
@@ -17,5 +17,6 @@ import raceresults.TestPersistenceContext;
 		DependencyInjectionTestExecutionListener.class,
 		DirtiesContextTestExecutionListener.class,
 		TransactionDbUnitTestExecutionListener.class })
+@DirtiesContext
 abstract class EntityTest {
 }

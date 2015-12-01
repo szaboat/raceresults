@@ -1,32 +1,17 @@
-package raceresults;
+package raceresults.tests;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import raceresults.entity.Race;
 import raceresults.entity.Race.Type;
 import raceresults.repository.RaceRepository;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { TestPersistenceContext.class })
-@TestExecutionListeners({
-        DependencyInjectionTestExecutionListener.class,
-        DirtiesContextTestExecutionListener.class,
-        TransactionDbUnitTestExecutionListener.class })
-public class RaceEntityTest {
+public class RaceEntityTest extends EntityTest {
 
     @Autowired
     private RaceRepository raceRepository;

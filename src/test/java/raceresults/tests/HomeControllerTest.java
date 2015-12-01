@@ -1,4 +1,4 @@
-package raceresults;
+package raceresults.tests;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
+import raceresults.TestApplication;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = TestApplication.class)
 @WebAppConfiguration
 public class HomeControllerTest {
 

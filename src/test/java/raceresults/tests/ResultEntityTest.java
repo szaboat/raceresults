@@ -1,14 +1,7 @@
-package raceresults;
+package raceresults.tests;
 
-import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import raceresults.entity.Athlete;
 import raceresults.entity.Race;
 import raceresults.entity.Race.Type;
@@ -23,13 +16,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestPersistenceContext.class)
-@TestExecutionListeners({
-		DependencyInjectionTestExecutionListener.class,
-		DirtiesContextTestExecutionListener.class,
-		TransactionDbUnitTestExecutionListener.class})
-public class ResultEntityTest {
+public class ResultEntityTest extends EntityTest {
 
 	@Autowired
 	private ResultRepository resultRepository;
